@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <body>
+    {% for post in posts %}
+      <article>
+        <h3>{{ post.author.username }}</h3>
+        <p>{{ post.pub_date|date:"d E Y" }}</p>
+        <p>{{ post.text }}</p>
+        {% if post.comments.all %}
+          <h3>Комменты:</h3>
+          {% for comment in post.comments.all %}
+            <h3>{{ comment.author.username }}</h3>
+            <p>{{ post.pub_date|date:"d E Y" }}</p>
+            <p>{{ comment.text }}</p>
+            <br>
+          {% endfor %}
+        {% endif %}
+      </article> 
+      <br><br><br>
+    {% endfor %}
+  </body>
+</html>
